@@ -10,7 +10,6 @@
 /* read/write */
 #include <unistd.h>
 /* i2c_slave */
-//#include <linux/i2c.h>
 #include <linux/i2c-dev.h>
 /* memcpy */
 #include <cstring>
@@ -27,7 +26,8 @@ class i2c {
   uint8_t i2c_dev;  
  public:
   i2c(std::string dev_path, uint8_t addr);
-  std::vector<uint8_t> readbus(uint8_t reg_addr, size_t size);
+  std::vector<uint8_t> readbus(std::vector<uint8_t> reg_addr);
+  void writebus(uint8_t reg_addr, uint8_t value);
   ~i2c();
 };
 #endif
