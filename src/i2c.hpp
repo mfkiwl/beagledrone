@@ -11,17 +11,20 @@
 #include <unistd.h>
 /* i2c_slave */
 #include <linux/i2c-dev.h>
-/* memcpy */
-#include <cstring>
-/* uint_8 */
+/* uint_8 and uint16_t */
 #include <cstdint>
 
 #include <string>
-#include <iostream>
 #include <stdexcept>
-#include <vector>
 
-class i2c {
+class i2c_interface {
+	public:
+		virtual ~i2c_interface() {};
+		virtual uint16_t readbus(uint8_t high_addr, uint8_t low_addr) = 0;
+		virtual void writebus(uint8_t reg_addr, uint8_t value) = 0;
+};
+
+class i2c : public i2c_interface {
  private:
   uint8_t i2c_dev;  
  public:

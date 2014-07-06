@@ -2,7 +2,6 @@
 #define _MAX21100_H_
 
 #include "i2c.hpp"
-#include <memory>
 
 class max21100 {
 	private:
@@ -20,7 +19,7 @@ class power_cfg {
 		static const uint16_t waitms = 6000;
 		static const uint8_t  addr   = 0x00;
 	public:
-		enum State { ENABLE = 0x7f, DISABLE = 0x00};
+		enum State { ENABLE = 0x7f, DISABLE = 0x00}; // Only two states implemented
 		power_cfg(i2c *i2cbus);
 		void power(State state);
 };
@@ -35,5 +34,7 @@ class temp {
 		temp(i2c *i2cbus_ptr);
 		float readTemp();
 };
+
+
 #endif
 
