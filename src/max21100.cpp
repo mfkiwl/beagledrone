@@ -32,7 +32,7 @@ void power_cfg::power(State state) {
 
 temp::temp(i2c *i2cbus_ptr) : i2cbus(i2cbus_ptr) { }
 float temp::readTemp() {
-	return(i2cbus->readbus(addr_high,addr_low)/(float)sensitivity);								 // read high byte and low byte
+	return((int16_t)i2cbus->readbus(addr_high,addr_low)/(float)sensitivity);								 // read high byte and low byte
 }
 
 gyro::gyro(i2c *i2cbus_ptr) : i2cbus(i2cbus_ptr) { }

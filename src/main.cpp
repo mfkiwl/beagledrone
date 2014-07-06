@@ -13,10 +13,12 @@ int main(int argc, char **args) {
 			std::stringstream ss;
 			//ss << (int)go.x << ":" << (int)go.y << ":" << (int)go.z;
 			double scale = 65536;
-			double x = ((ao.x*(4/scale))/1.875)-2.1;
-			double y = ((ao.y*(4/scale))/1.875)-2.1;
-			double z = ((ao.z*(4/scale))/1.875)-1.4;
-	
+			double x = (((int16_t)ao.x*(4/scale)));
+			double y = (((int16_t)ao.y*(4/scale)));
+			double z = (((int16_t)ao.z*(4/scale)));
+	//double x = (int16_t)ao.x;
+	//double y = (int16_t)ao.y;
+	//double z = (int16_t)ao.z;
 			ss << x << ":" << y << ":" << z;
 			std::cout << ss.str() << std::endl;
 		}
