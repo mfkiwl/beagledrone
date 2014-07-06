@@ -14,6 +14,16 @@ float max21100::readTemp() {
 	 return t.readTemp();
 }
 
+Orientation max21100::getGyroXYZ() {
+	gyro g(i2cbus);
+	return g.getXYZ();
+}
+
+Orientation max21100::getAccelXYZ() {
+	accel a(i2cbus);
+	return a.getXYZ();
+}
+
 power_cfg::power_cfg(i2c *i2cbus_ptr) : i2cbus(i2cbus_ptr) { }
 void power_cfg::power(State state) {
 	i2cbus->writebus(addr, state);                              // power on
@@ -23,5 +33,23 @@ void power_cfg::power(State state) {
 temp::temp(i2c *i2cbus_ptr) : i2cbus(i2cbus_ptr) { }
 float temp::readTemp() {
 	return(i2cbus->readbus(addr_high,addr_low)/(float)sensitivity);								 // read high byte and low byte
+}
+
+gyro::gyro(i2c *i2cbus_ptr) : i2cbus(i2cbus_ptr) { }
+Orientation gyro::getXYZ() {
+	Orientation o;
+	o.x = i2cbus->readbus(addr_high_x,addr_low_x);
+	o.y = i2cbus->readbus(addr_high_y,addr_low_y);
+	o.z = i2cbus->readbus(addr_high_z,addr_low_z);
+	return o;
+}
+
+accel::accel(i2c *i2cbus_ptr) : i2cbus(i2cbus_ptr) { }
+Orientation accel::getXYZ() {
+	Orientation o;
+	o.x = i2cbus->readbus(addr_high_x,addr_low_x);
+	o.y = i2cbus->readbus(addr_high_y,addr_low_y);
+	o.z = i2cbus->readbus(addr_high_z,addr_low_z);
+	return o;
 }
 
