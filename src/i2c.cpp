@@ -13,11 +13,12 @@ i2c::~i2c() {
 	close(i2c_dev);
 }
 
-uint16_t i2c::readbus(std::vector<uint8_t> reg_addr) {
+uint16_t i2c::readbus(uint8_t high_addr, uint8_t low_addr) {
 	uint16_t value = 0;
-	for(uint8_t &addr : reg_addr) {
-		value = (value<<8) | i2c_smbus_read_byte_data(i2c_dev, addr);
-	}
+	
+		value = (i2c_smbus_read_byte_data(i2c_dev, high_addr)<<8);
+		value |= i2c_smbus_read_byte_data(i2c_dev, low_addr);
+		
 	return(value);
 }
 

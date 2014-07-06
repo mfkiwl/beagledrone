@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
  
 PROJECT(beagledrone)
-ADD_EXECUTABLE (beagledrone main.cpp i2c.cpp) 
+ADD_EXECUTABLE (beagledrone main.cpp i2c.cpp max21100.cpp) 
 
 if(UNIX)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
