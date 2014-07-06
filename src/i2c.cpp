@@ -13,13 +13,12 @@ i2c::~i2c() {
 	close(i2c_dev);
 }
 
-std::vector<uint8_t> i2c::readbus(std::vector<uint8_t> reg_addr) {
-	std::vector<uint8_t> read_vec(0);
+uint16_t i2c::readbus(std::vector<uint8_t> reg_addr) {
+	uint16_t value = 0;
 	for(uint8_t &addr : reg_addr) {
-		uint8_t byte = i2c_smbus_read_byte_data(i2c_dev, addr);
-		read_vec.push_back(byte);
+		value = (value<<8) | i2c_smbus_read_byte_data(i2c_dev, addr);
 	}
-	return(read_vec);
+	return(value);
 }
 
 void i2c::writebus(uint8_t reg_addr, uint8_t value) {

@@ -26,7 +26,7 @@ class i2c {
   uint8_t i2c_dev;  
  public:
   i2c(std::string dev_path, uint8_t addr);
-  std::vector<uint8_t> readbus(std::vector<uint8_t> reg_addr);
+  uint16_t readbus(std::vector<uint8_t> reg_addr);
   void writebus(uint8_t reg_addr, uint8_t value);
   ~i2c();
 };
