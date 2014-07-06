@@ -50,6 +50,7 @@ Orientation accel::getXYZ() {
 	o.x = i2cbus->readbus(addr_high_x,addr_low_x);
 	o.y = i2cbus->readbus(addr_high_y,addr_low_y);
 	o.z = i2cbus->readbus(addr_high_z,addr_low_z);
+	
 	return o;
 }
 
