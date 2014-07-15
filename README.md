@@ -9,8 +9,8 @@ Table shows which sensors are implemented.
 
 | Hardware | Sensor | Implemented |
 |----------|--------| ----------- |
-| MAX21100 | Accel  | Incomplete  |
-| MAX21100 | Gyro   | Incomplete  |
+| MAX21100 | Accel  | Yes         |
+| MAX21100 | Gyro   | Yes         |
 | MAX21100 | Magnet | Not yet     |
 | MAX21100 | Temp   | Yes         |
 | MS5611   | Baro   | Not yet     |
