@@ -2,6 +2,7 @@
 #define _MAX21100_H_
 
 #include "i2c.hpp"
+#include <iostream>
 
 struct Orientation { uint16_t x; uint16_t y; uint16_t z; };
 
@@ -62,8 +63,21 @@ private:
   static const uint8_t  addr_low_y    = 0x2D;
   static const uint8_t  addr_high_z   = 0x2E;
   static const uint8_t  addr_low_z    = 0x2F;
+  static const uint8_t  addr_high_x_bias = 0x19;
+  static const uint8_t  addr_high_y_bias = 0x1A;
+  static const uint8_t  addr_high_z_bias = 0x1B;
 public:
   accel(i2c *i2cbus_ptr);
   Orientation getXYZ();
+};
+
+class bank {
+private:
+  i2c *i2cbus;
+   static const uint8_t  addr   = 0x22;
+public:
+	enum Bank {BANK0=0x00, BANK1=0x01, BANK2=0x02, BANK3=0x03};
+	bank(i2c *i2cbus_ptr);
+	void setBank(Bank bank);
 };
 #endif

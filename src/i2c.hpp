@@ -30,6 +30,7 @@ private:
 public:
   i2c(std::string dev_path, uint8_t addr);
   uint16_t readbus(uint8_t high_addr, uint8_t low_addr);
+  uint8_t readbus(uint8_t high_addr);
   void writebus(uint8_t reg_addr, uint8_t value);
   ~i2c();
 };

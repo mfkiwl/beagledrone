@@ -13,6 +13,9 @@ i2c::~i2c() {
   close(i2c_dev);
 }
 
+uint8_t i2c::readbus(uint8_t high_addr) {
+	return i2c_smbus_read_byte_data(i2c_dev, high_addr);
+}
 uint16_t i2c::readbus(uint8_t high_addr, uint8_t low_addr) {
   uint16_t value = (i2c_smbus_read_byte_data(i2c_dev, high_addr)<<8);
   return value | i2c_smbus_read_byte_data(i2c_dev, low_addr);
