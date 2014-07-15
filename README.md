@@ -3,6 +3,19 @@ beagledrone
 
 Software for beaglebone controlling multirotor drones.
 
+## Build
+### Java client
+```bash
+ant
+ant BeagleUDP
+```
+### C++ server
+```bash
+cd src
+cmake CMakeList.txt
+make
+```
+
 ## Sensors
 
 Table shows which sensors are implemented.
